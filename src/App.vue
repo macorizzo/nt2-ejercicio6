@@ -1,27 +1,27 @@
 <template>
   <div id="app">
-    <HeaderComponent :pickedColor="pickedColor" />
+    <Header :pickedColor="pickedColor" />
     <NavBar @isHard="isHard = $event" @squareQty="squareQty = $event" @colors="getColors" @pickedColor="getPicked"
       :message="message" />
-    <ContainerComponent :squareQty="squareQty" :colors="colors" @selectedColor="getSelected" @pickedColor="getPicked"
+    <Container :squareQty="squareQty" :colors="colors" @selectedColor="getSelected" @pickedColor="getPicked"
       @message="getMessage" :pickedColor="pickedColor" />
     <square-component/>
   </div>
 </template>
 
 <script>
-import HeaderComponent from './components/HeaderComponent.vue'
+import Header from './components/Header.vue'
 import NavBar from './components/NavBar.vue'
-import ContainerComponent from './components/ContainerComponent.vue'
+import Container from './components/Container.vue'
 import SquareComponent from './components/SquareComponent.vue'
 
 
 export default {
   name: 'App',
   components: {
-    HeaderComponent,
+    Header,
     NavBar,
-    ContainerComponent,
+    Container,
     SquareComponent,
   },
   updated() {
