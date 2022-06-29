@@ -1,11 +1,8 @@
 <template>
   <div id="app">
-    <Header :pickedColor="pickedColor" />
-    <NavBar @isHard="isHard = $event" @squareQty="squareQty = $event" @colors="getColors" @pickedColor="getPicked"
-      :message="message" />
-    <Container :squareQty="squareQty" :colors="colors" @selectedColor="getSelected" @pickedColor="getPicked"
-      @message="getMessage" :pickedColor="pickedColor" />
-    <square-component/>
+    <Header />
+    <NavBar />
+    <Container />
   </div>
 </template>
 
@@ -13,42 +10,18 @@
 import Header from './components/Header.vue'
 import NavBar from './components/NavBar.vue'
 import Container from './components/Container.vue'
-import SquareComponent from './components/SquareComponent.vue'
-
-
 export default {
   name: 'App',
   components: {
     Header,
     NavBar,
-    Container,
-    SquareComponent,
-  },
-  updated() {
+    Container
   },
   data() {
     return {
-      isHard: false,
-      squareQty: 0,
-      colors: [],
-      selectedColor: '',
-      pickedColor: '',
-      message: '',
     }
   },
   methods: {
-    getColors(e) {
-      this.colors = e;
-    },
-    getSelected(e) {
-      this.selectedColor = e;
-    },
-    getPicked(e) {
-      this.pickedColor = e;
-    },
-    getMessage(e) {
-      this.message = e;
-    }
   }
 }
 </script>
@@ -58,13 +31,11 @@ html {
   margin: 0;
   all: unset;
 }
-
 body {
   margin: 0;
   padding: 0;
-  background-color: #353535;
+  background-color: #232323;
 }
-
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

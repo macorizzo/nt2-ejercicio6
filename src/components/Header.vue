@@ -1,4 +1,4 @@
-<template>
+<template lang="html">
 
   <section class="header-component">
     <div id="header">
@@ -17,7 +17,7 @@
 
 export default {
   name: 'header-component',
-  props: ['pickedColor'],
+  props: [],
   mounted() {
 
   },
@@ -44,7 +44,7 @@ export default {
   text-transform: uppercase;
   text-align: center;
   margin: 0;
-  color: palegoldenrod;
+  color: white;
 }
 
 h1 {
@@ -57,6 +57,4 @@ h1 {
 #colorDisplay {
   font-size: 200%;
 }
-
-
 </style>

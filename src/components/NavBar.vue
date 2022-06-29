@@ -1,9 +1,13 @@
-<template>
+<template lang="html">
 
-  <section class="square-component">
-    <div class="square" @click="getColor()" :class="isWrong && 'displayNone'"
-      :style="{ 'background-color': isWrong ? '#232323' : color }">
+  <section class="nav-bar">
+    <div id="navigator">
+      <button id="reset" @click="restart()"> New colors</button>
+      <span class="msg">{{ message }} </span>
+      <button id="easy" :class="!isHard && 'selected'" @click="setDifficulty({ isHard: false, qty: 3 })">easy</button>
+      <button id="hard" :class="isHard && 'selected'" @click="setDifficulty({ isHard: true, qty: 6 })">hard</button>
     </div>
+
   </section>
 
 </template>
@@ -11,29 +15,14 @@
 <script lang="js">
 
 export default {
-  name: 'square-component',
-  props: ['color', 'pickedColor'],
-  mounted() {
-
-  },
+  name: 'nav-bar',
+  props: [],
   data() {
     return {
-      isWrong: false,
+
     }
   },
   methods: {
-    getColor() {
-      let msg = '';
-      if (this.pickedColor === this.color) {
-        msg = "You win";
-      } else {
-        msg = "Choose another color";
-        this.isWrong = true;
-      }
-      this.$parent.$emit('selectedColor', this.color);
-      this.$parent.$emit('message', msg);
-
-    }
   },
   computed: {
 
@@ -44,22 +33,42 @@ export default {
 </script>
 
 <style scoped lang="css">
+#navigator {
 
+  background: #ffffff;
+  height: 30px;
+  text-align: center;
+  margin: 0;
+  margin-top: -30px;
 
-.displayNone {
-  background-color: #232323;
 }
 
-.square {
-  width: 30%;
-  background: blue;
-  padding-bottom: 30%;
-  float: left;
-  margin: 1.66%;
-  border-radius: 10%;
-  transition: background 0.8s;
-  -webkit-transition: background 0.8s;
-  -moz-transition: background 0.8s;
+.msg {
+  color: red;
+  display: inline-block;
+  width: 20%;
+}
 
+button {
+  border: none;
+  background-color: white;
+  font-family: "Montserrat", "Avenir";
+  text-transform: uppercase;
+  height: 100%;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: steelblue;
+  transition: all 0.3s;
+  outline: none;
+}
+
+button:hover {
+  color: white;
+  background-color: steelblue;
+}
+
+.selected {
+  background-color: steelblue;
+  color: white;
 }
 </style>

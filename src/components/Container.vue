@@ -1,9 +1,9 @@
-<template>
+<template lang="html">
 
   <section class="container-component">
     <div id="container">
-      <SquareComponent v-for="(square, index) in squareQty" :key="index" :color="colors[index]" :pickedColor="
-      pickedColor" @selectedColor="selectedColor = $event" />
+      <SquareComponent v-for="(_, index) in squareQty" :key="index" :color="colors[index]" :status="squareStatus[index]"
+        :index="index" />
     </div>
 
   </section>
@@ -11,13 +11,15 @@
 </template>
 
 <script lang="js">
+
 import SquareComponent from './SquareComponent.vue';
 
 export default {
   name: 'container-component',
   components: { SquareComponent },
-  props: ["squareQty", "colors", 'pickedColor'],
+  props: [],
   updated() {
+
   },
   data() {
     return {
@@ -37,7 +39,6 @@ export default {
 <style scoped lang="css">
 #container {
   margin: 20px auto;
-  max-width: 601px;
+  max-width: 600px;
 }
-
 </style>

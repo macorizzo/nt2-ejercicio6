@@ -1,8 +1,7 @@
 <template>
 
   <section class="square-component">
-    <div class="square" @click="getColor()" :class="isWrong && 'displayNone'"
-      :style="{ 'background-color': isWrong ? '#232323' : color }">
+    <div class="square" @click="getColor(index)" :style="{ 'background-color': status ? '#232323' : color }">
     </div>
   </section>
 
@@ -12,28 +11,16 @@
 
 export default {
   name: 'square-component',
-  props: ['color', 'pickedColor'],
+  props: ["color", "status", "index"],
   mounted() {
 
   },
   data() {
     return {
-      isWrong: false,
+      // isWrong: false,
     }
   },
   methods: {
-    getColor() {
-      let msg = '';
-      if (this.pickedColor === this.color) {
-        msg = "You win";
-      } else {
-        msg = "Choose another color";
-        this.isWrong = true;
-      }
-      this.$parent.$emit('selectedColor', this.color);
-      this.$parent.$emit('message', msg);
-
-    }
   },
   computed: {
 
@@ -44,7 +31,7 @@ export default {
 </script>
 
 <style scoped lang="css">
-
+.square-component {}
 
 .displayNone {
   background-color: #232323;
